@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+ <head>
+ 	<title>Helsinki Pubmeet 13 Nov 2015</title>
+ 	<meta charset='utf-8'>
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+	<style>
+	
+	* {
+		margin: 0px;
+		padding: 0px;
+		overflow: hidden;
+	}
+
+ 	@font-face {
+		font-family: 'AMIGAHH';
+		src: url('P0T-NOoDLE_v1.0.ttf') format('truetype');
+		font-weight: normal;
+		font-style: normal;
+	}
+
+	body {
+		background: black;
+	}
+	
+ 	.aligncenter {
+ 		position: absolute;
+ 		top: 0px;
+ 		width: 100%;
+ 		text-align: center;
+ 		margin: auto;
+ 	}
+	
+	#message {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		font-family: 'AMIGAHH', cursive;
+		color: red;
+		width: 100%;
+		height: 100%;
+		margin: auto;
+		text-align: center;
+		font-size: 2em;
+		overflow-y: hidden;
+		text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+		/*text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;*/
+		line-height: 2em;
+		z-index: 21;
+	}
+	
+	#message span {
+		position: relative;
+		top: 80%;
+		font-size:2em;
+	}
+
+ 	</style>
+	<script src="requestanimationframe.js"></script>
+	<script type="text/javascript" src="js/utils.js"></script>
+    <script type="text/javascript" src="js/player.js"></script>
+    <script type="text/javascript" src="js/pt.js"></script>
+    <script type="text/javascript" src="js/st3.js"></script>
+    <script type="text/javascript" src="js/ft2.js"></script>
+    <!--<script type="text/javascript" src="js/ui.js"></script>-->
+  	<script type="application/javascript">
+
+rand = function(n){
+	return Math.floor(Math.random()*n);
+};
+
+function init() {
+    var module = new Modplayer();
+    module.setrepeat(true);
+	module.setautostart(true);
+	module.setamigamodel("500");
+	module.setseparation(1);
+
+	module.onPlay=function() {
+		console.log('yo play bitch');
+	    /*var oldpos=-1, oldrow=-1;
+	    $("#play").html("[stop]");
+	    if (!this.paused) $("#pause").removeClass("down");
+	    timer=setInterval(function(){
+	      var i,c;
+	      var mod=module;
+
+	      if (window.moduleVis==2) {
+	        var txt, txt0="<br/>", txt1="<br/>";
+	        for(ch=0;ch<mod.channels;ch++) {
+	          txt='<span class="channelnr">'+hb(ch)+'</span> ['+vu(mod.chvu[ch])+'] '+
+	              '<span class="hl">'+hb(mod.currentsample(ch))+'</span>:<span class="channelsample">'+rpe(pad(mod.samplenames[mod.currentsample(ch)], 28))+"</span><br/>";
+	          if (ch&1) txt0+=txt; else txt1+=txt;
+	        }
+	        $("#even-channels").html(txt0);
+	        $("#odd-channels").html(txt1);
+	      }
+	      if (window.moduleVis==1) {
+	        if (oldpos>=0 && oldrow>=0) $(".currentrow").removeClass("currentrow");
+	        $("#pattern"+hb(mod.currentpattern())+"_row"+hb(mod.row)).addClass("currentrow");
+	        $("#pattern"+hb(mod.currentpattern())).scrollTop(mod.row*16);
+	        if (oldpos != mod.position) {
+	          if (oldpos>=0) $(".currentpattern").removeClass("currentpattern");
+	          $("#pattern"+hb(mod.currentpattern())).addClass("currentpattern");
+	        }
+	      }
+
+	      if (oldrow != mod.row || oldpos != mod.position) {
+	        $("#modtimer").replaceWith("<span id=\"modtimer\">"+
+	          "pos <span class=\"hl\">"+hb(mod.position)+"</span>/<span class=\"hl\">"+hb(mod.songlen)+"</span> "+
+	          "row <span class=\"hl\">"+hb(mod.row)+"</span>/<span class=\"hl\">"+hb(mod.currentpattlen()-1)+"</span> "+
+	          "speed <span class=\"hl\">"+mod.speed+"</span> "+
+	          "bpm <span class=\"hl\">"+mod.bpm+"</span> "+
+	          "filter <span class=\"hl\">"+(mod.filter ? "on" : "off")+"</span>"+
+	          "</span>");
+
+	        $("#modsamples").children().removeClass("activesample");
+	        for(c=0;c<mod.channels;c++)
+	          if (mod.noteon(c)) $("#sample"+hb(mod.currentsample(c)+1)).addClass("activesample");
+	      }
+	      oldpos=mod.position;
+	      oldrow=mod.row;
+	    }, (mobileSafari ? 80.0 : 40.0) ); // half display update speed for iOS
+*/
+  };
+
+  module.onStop=function() {
+    /*$("#modsamples").children().removeClass("activesample");
+    $("#even-channels").html("");
+    $("#odd-channels").html("");
+    $(".currentpattern").removeClass("currentpattern");
+    clearInterval(timer);
+    $("#modtimer").html("stopped");
+    $("#play").html("[play]");
+
+    // if in playlist mode, load next song
+    if (window.playlistActive && module.endofsong) {
+      var opt=$("#playlist_box option:selected");
+      if (opt.length) {
+        var n=$(opt).next("option");
+        if (n.length) {
+          // load next track
+        } else {
+          // jump to first
+          n=$("#playlist_box option:first");
+        }
+        $("#playlist_box").val($(n).val()).change();
+        playFromPlaylist(module, true);
+      }
+    }
+    */
+    	console.log('stop that shit');
+  	};
+
+	var loadInterval=setInterval(function(){
+	  if (!module.delayload) {
+	     //window.currentModule=$("#modfile").val();
+	     //window.playlistActive=false;
+	     //$("#modtimer").html("loading");
+	     module.load('MOD.friday the 13th');
+	     if (!rawing) drawCanvas();
+	     //module.load(musicPath+$("#modfile").val());
+	     clearInterval(loadInterval);
+	  }
+	}, 200);
+	//module.load('MOD.friday the 13th');
+	//drawCanvas();
+}
+
+var w;
+var h;
+var ctx;
+var halfw;
+var halfh;
+
+var rawing = false;
+
+function drawCanvas() {
+
+	resize();
+	loadLine('','');
+
+	rawing = true;
+
+	var num = 10;
+	
+	ctx.fillStyle = "rgba(0,0,0,1.0)";
+	ctx.fillRect(0,0,w,h);
+	
+	function drawThis() {
+		
+		var d2 = new Date();
+		var n2 = d2.getTime(); 
+		
+		var sin1 = Math.sin((n2-n)/200)+1.0;
+		var cos1 = Math.cos((n2-n)/800)+1.0;
+		var cos2 = Math.cos((n2-n)/2800);
+		
+		//var gray = parseInt(155*cos2+100,10);
+		ctx.fillStyle = "rgba(0,0,0,1.0)";
+		ctx.fillRect(0,0,w,h);
+		//if (rms > 0.45) ctx.fillStyle = "rgba(0,0,0,0.1)";
+		//ctx.fillRect(0,0,w,h);
+		
+		ctx.lineWidth = 10;
+		ctx.strokeStyle = "rgba(205,0,205,1.0)";
+		ctx.save();
+		ctx.translate(w*.5,h*.5);
+		ctx.rotate((n2-n)*0.0001);
+		for(var i=0; i<num; i++) {
+			var sizex = halfw - i*(4+cos2*20+i*2);
+			var sizey = halfh - i*(4+cos2*100);
+			//ctx.save();
+			ctx.beginPath();
+			ctx.moveTo(w*.25-sizex, h*.25-sizey);
+			ctx.lineTo(w*.25-sizex, h*.25+sizey);
+			ctx.lineTo(w*.25+sizex, h*.35+sizey);
+			ctx.lineTo(w*.25+sizex, h*.25-sizey);
+			ctx.closePath();
+			ctx.stroke();
+		}
+		ctx.restore();
+
+		ctx.strokeStyle = "rgba(205,205,0,1.0)";
+		ctx.save();
+		ctx.translate(w*.5,h*.5);
+		ctx.rotate((n2-n)*0.0001+20);
+		for(var i=0; i<num; i++) {
+			var sizex = halfw - i*(40+cos2*20+i*2);
+			var sizey = halfh - i*(4+cos2*120);
+			//ctx.save();
+			ctx.beginPath();
+			ctx.moveTo(w*.25-sizex, h*.25-sizey);
+			ctx.lineTo(w*.35-sizex, h*.25+sizey);
+			ctx.lineTo(w*.25+sizex, h*.25+sizey);
+			ctx.lineTo(w*.25+sizex, h*.25-sizey);
+			ctx.closePath();
+			ctx.stroke();
+		}
+		ctx.restore();
+
+		ctx.strokeStyle = "rgba(0,205,205,1.0)";
+		ctx.save();
+		ctx.translate(w*.5,h*.5);
+		ctx.rotate((n2-n)*0.0001+40);
+		for(var i=0; i<num; i++) {
+			var sizex = halfw - i*(40+cos1*20+i*2);
+			var sizey = halfh - i*(24+cos2*120);
+			//ctx.save();
+			ctx.beginPath();
+			ctx.moveTo(w*.15-sizex, h*.25-sizey);
+			ctx.lineTo(w*.25-sizex, h*.25+sizey);
+			ctx.lineTo(w*.25+sizex, h*.25+sizey);
+			ctx.lineTo(w*.35+sizex, h*.25-sizey);
+			ctx.closePath();
+			ctx.stroke();
+		}
+		ctx.restore();
+		
+		//ctx.rotate(sin1*0.01);
+
+		//ctx.fillStyle = "rgba(255,255,255,"+rms+")";
+		//ctx.fillRect(0,0,w,h);		
+	}
+	
+	requestAnimationFrame( animate );
+	
+	var d = new Date();
+	var n = d.getTime();
+	var repeater = n;
+	var rperiod = 6000;
+	var index = 0;
+
+	function animate() {
+		requestAnimationFrame( animate );
+		drawThis();
+		
+		var dom = document.getElementById('message');
+		if (dom) {
+			var d2 = new Date();
+			var n2 = d2.getTime(); 
+			if (((n2-n) > 6000) && (n2-repeater) > rperiod) {
+				repeater = n2;
+				loadLine('',words[index++]);
+				if (index >= words.length) index = 0;
+			}
+		}
+	}
+}
+
+window.onresize = resize;
+
+function resize() {
+	w = window.innerWidth;
+	h = window.innerHeight;
+	
+	var canvas = document.getElementById("canvas");
+	canvas.setAttribute("width", w);
+	canvas.setAttribute("height", h);
+	
+	ctx = canvas.getContext("2d");
+	ctx.width = w;
+	ctx.height = h;
+	halfw = w*.5;
+	halfh = h*.5;
+}
+
+function loadLine(thisclass, thistext) {
+	var content = '';
+	content += '<span class="'+thisclass+'">'+thistext+'</span><br />';
+	document.getElementById('message').innerHTML = content;
+}
+
+var words = [
+"",
+"guru metitation error",
+"is not welcome at FAP 2015",
+"to prevent it you shoult come",
+"to helsinki pubmeet",
+"13 November 2015",
+"18:00 Sornainen William-K",
+"",
+"greetings to accession only",
+"fuckings to lamers",
+"",
+"cote: ps",
+"music: Baby Kool",
+"player: firehawk",
+"broken keyboart: skeneklubi",
+"",
+"cum to <a href=\"http://tnsp.org/fap/2015/\">FAP 2015</a>"
+];
+    
+  </script>
+ </head>
+ <body onload="init()">
+ 	<div class="aligncenter">
+   		<canvas id="canvas" width="800" height="600"></canvas>
+   		<div id="message">titanics cruncher tecrunches while loating...</div>
+   	</div>
+ </body>
+</html>
